@@ -5,6 +5,9 @@ const clearButton = document.querySelector('[all-clear]')
 const equalButton = document.querySelector('[equal]')
 const previousInputElement = document.querySelector('[previous-input]')
 const currentInputElement = document.querySelector('[current-input]')
+const comma = document.getElementById('comma')
+const indoLanguage = document.getElementById('indo')
+const englishLanguage = document.getElementById('english')
 
 class Calculator {
     constructor(previousInputElement, currentInputElement) {
@@ -13,6 +16,11 @@ class Calculator {
         this.clear()
         this.updateDisplay()
     }
+
+    setLanguage(){
+        
+    }
+
 
     clear() {
         this.previousInput = ''
@@ -26,7 +34,7 @@ class Calculator {
 
 
     appendNumber(number) {
-        if (number === '.' && this.currentInput.includes('.')) return
+        if (number === comma.innerText && this.currentInput.includes(comma.innerText)) return
         this.currentInput += number
     }
 
@@ -41,25 +49,27 @@ class Calculator {
     }
 
     updateDisplay() {
-        this.previousInputElement.innerText = `${this.numberDisplay(this.previousInput)} ${this.operation}`
-        this.currentInputElement.innerText = this.numberDisplay(this.currentInput)
+        this.previousInputElement.innerText = `${this.previousInput} ${this.operation}`
+        this.currentInputElement.innerText = this.currentInput
+        // this.previousInputElement.innerText = `${this.numberDisplay(this.previousInput)} ${this.operation}`
+        // this.currentInputElement.innerText = this.numberDisplay(this.currentInput)
     }
 
-    numberDisplay(number) {
-        const numberStr = number.toString()
-        const integerDigits = parseFloat(numberStr.split('.')[0])
-        const decimalDigits = numberStr.split('.')[1]
-        let integerDisplay
-        if(isNaN(integerDigits)){
-            integerDisplay = ''
-        } else {
-            integerDisplay = integerDigits.toLocaleString('en-US')
-        }
-        if (decimalDigits != null) {
-            return `${integerDisplay}.${decimalDigits}`
-        } else {
-            return integerDisplay
-        }
+    numberDisplay(number , bahasa = 'en-US') {
+        // const numberStr = number.toString()
+        // const integerDigits = parseFloat(numberStr.split('.')[0])
+        // const decimalDigits = numberStr.split('.')[1]
+        // let integerDisplay
+        // if(isNaN(integerDigits)){
+        //     integerDisplay = ''
+        // } else {
+        //     integerDisplay = integerDigits.toLocaleString(bahasa)
+        // }
+        // if (decimalDigits != null) {
+        //     return `${integerDisplay}.${decimalDigits}`
+        // } else {
+        //     return integerDisplay
+        // }
     }
 
     compute() {
@@ -109,3 +119,4 @@ deleteButton.addEventListener('click', () => {
     calculator.delete()
     calculator.updateDisplay()
 })
+
