@@ -73,3 +73,23 @@ body {
     text-decoration: none;
     color: rgba(0, 0, 0, 0.8);
 }
+
+#indo , #english
+{
+    position: absolute;
+    top: 1rem;
+    border: none;
+    background-color: transparent;
+    padding: 10px;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+#indo
+{
+    left: 2rem;
+}
+
+#english
+{
+    left: 8rem;
+}
